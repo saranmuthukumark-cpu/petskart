@@ -9,8 +9,6 @@ The platform enables users to **buy and sell pets, livestock, and pet-related pr
 
 Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard** based on their role.
 
----
-
 ##  User Roles & Features
 
 ### 1. Admin (Control Panel)
