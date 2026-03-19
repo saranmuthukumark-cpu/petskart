@@ -117,9 +117,9 @@ Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard*
 
 3.  Expandable to Pet Services (Big Future Scope)
 
-   *Veterinary services
+   * Veterinary services
 
-   *Pet care products
+   * Pet care products
 
    ---
  # Conclusion
