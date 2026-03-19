@@ -36,7 +36,7 @@ Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard*
 * Integrates pets, livestock, and accessories in one place
 
 
-##  User Roles & Features
+##  User Roles & Workflow
 
 ### 1. Admin (Control Panel)
 
