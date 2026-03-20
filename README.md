@@ -1,56 +1,51 @@
-## PETSKART - Pets & Livestock E-Commerce Platform (MERN Stack)
+# PETSKART – Pets & Livestock E-Commerce Platform (MERN Stack)
 
+---
 
+## Project Overview
 
-
-**Petskart** is a modern **MERN Stack (MongoDB, Express.js, React.js, Node.js)** based e-commerce web application designed for pet lovers and livestock traders.
+**PetsKart** is a modern **MERN Stack (MongoDB, Express.js, React.js, Node.js)** based e-commerce web application designed for pet lovers and livestock traders.
 
 The platform enables users to **buy and sell pets, livestock, and pet-related products** with a **multi-role authentication system**.
 
-Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard** based on their role.
+Each user (**Admin, Vendor, Client**) logs in and accesses a **separate dashboard** based on their role.
+
+---
 
 ## Problem Statement
 
-* No dedicated platform for pets, livestock, and accessories together
-
-* Difficulty in finding trusted and verified sellers
-
+* No dedicated platform for **pets, livestock, and accessories** in one place
+* Difficulty in finding **trusted and verified sellers**
 * Lack of proper animal details (price, age, breed, health)
+* No **location-based system** for nearby livestock discovery
+* No proper system for vendors to **manage listings efficiently**
 
-* No location-based system for nearby livestock discovery
-
-* No proper system for vendors to manage listings
-
-
+---
 
 ## Objective
 
-* Connects buyers and sellers directly
+* Connect buyers and sellers directly
+* Provide detailed and structured animal listings
+* Support both **online shopping and direct seller interaction**
+* Enable **location-based search**
+* Integrate pets, livestock, and accessories in one platform
 
-* Provides detailed and structured animal listings
+---
 
-* Supports both online shopping and direct seller interaction
-
-* Enables location-based search
-
-* Integrates pets, livestock, and accessories in one place
-
-
-##  User Roles & Workflow
+## User Roles & Workflow
 
 ### 1. Admin (Control Panel)
 
 #### Features:
 
-* login with admin role
+* Secure admin login
 * Manage all users (block/unblock vendors & clients)
 * Full CRUD operations:
-  
+
   * Add / Update / Delete pets & livestock
   * Manage veterinary services
-  * Managing pets gromming and pets training 
+  * Manage pet grooming and training services
   * Manage accessories (food, cages, dress, toys)
-    
 * Approve or reject vendor listings
 * View all orders and transactions
 * Dashboard analytics (sales, users, listings)
@@ -64,9 +59,8 @@ Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard*
 * Register/Login as vendor
 * Create listings for:
 
-  * Pets (dog, cat, bird) for money or free.
+  * Pets (dog, cat, bird) – for sale or free
   * Livestock (cow, buffalo, goat, etc.)
-    
 * Upload listing details:
 
   * Animal images
@@ -75,7 +69,6 @@ Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard*
   * Location
   * Description
 * Manage listings (Edit/Delete)
-  
 * Track sales and orders
 
 ---
@@ -96,37 +89,31 @@ Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard*
 
   * Animal details (price, age, images)
   * Seller contact information
-    
 * Purchase:
 
-  * Small pets & accessories in cart system
-    
+  * Small pets & accessories using cart system
 * Shopping flow:
 
   * Add to cart → Checkout → Payment → Order confirmation
-    
 * Save and manage delivery address
 
 ---
 
-# Unique Selling Point
+## Unique Selling Points (USP)
 
-1.  Hybrid Platform (E-Commerce + Live Animal Marketplace)
+1. **Hybrid Platform** – Combines e-commerce with live animal marketplace
+2. **Nearby Livestock Discovery** – Location-based animal search
+3. **Multi-Role Ecosystem** – Admin, Vendor, and Client dashboards
+4. **Dual Buying System** – Online purchase + direct seller interaction
+5. **Expandable Services** – Veterinary care, grooming, and training
 
-2.  Nearby Livestock Discovery
+---
 
-3.  Expandable to Pet Services (Big Future Scope)
+## Key Problems vs Our Solutions
 
-   * Veterinary services
+This project addresses major limitations found in existing platforms by providing a more flexible and scalable system.
 
-   * Pet care products
-
-   ---
-   ## 📊 Key Problems vs Our Solutions
-
-This project addresses major limitations found in existing pet and livestock platforms by introducing a more flexible and scalable marketplace system.
-
-| 🚧 Problem               | ❌ Existing Platforms                 | ✅ Our Solution                                      |
+| Problem                  | ❌ Existing Platforms                 | ✅ Our Solution                                      |
 | ------------------------ | ------------------------------------ | --------------------------------------------------- |
 | Single vendor limitation | Only one business sells products     | Multi-vendor marketplace (multiple sellers)         |
 | No livestock support     | Pets only, no cow/buffalo selling    | Supports pets + full livestock trading              |
@@ -136,22 +123,22 @@ This project addresses major limitations found in existing pet and livestock pla
 
 ---
 
- # Conclusion
+## Conclusion
 
-Pets Zone is a complete digital marketplace that connects pet lovers, livestock sellers, and buyers in one platform, making the process simple, transparent, and efficient.
+**PetsKart** is a complete digital marketplace that connects pet lovers, livestock sellers, and buyers in one platform, making the process **simple, transparent, and efficient**.
 
-  ---
-##  References
+---
 
-### 🔗 Inspiration Platforms
+## References
+
+### Inspiration Platforms
 
 * Petmania (Pet Products E-Commerce)
-  https://www.petmania.ie/
+  [https://www.petmania.ie/](https://www.petmania.ie/)
 
 * Dog Sale in Chennai (Animal Listings Platform)
-  https://dogsaleinchennai.com/index.php
+  [https://dogsaleinchennai.com/index.php](https://dogsaleinchennai.com/index.php)
 
-  ---
+---
 
 *Connecting pet lovers and sellers on one powerful platform*
-
