@@ -122,6 +122,20 @@ Each user (**Admin, Vendor, Client**) login and accesses a **separate dashboard*
    * Pet care products
 
    ---
+   ## 📊 Key Problems vs Our Solutions
+
+This project addresses major limitations found in existing pet and livestock platforms by introducing a more flexible and scalable marketplace system.
+
+| 🚧 Problem               | ❌ Existing Platforms                 | ✅ Our Solution                                      |
+| ------------------------ | ------------------------------------ | --------------------------------------------------- |
+| Single vendor limitation | Only one business sells products     | Multi-vendor marketplace (multiple sellers)         |
+| No livestock support     | Pets only, no cow/buffalo selling    | Supports pets + full livestock trading              |
+| No nearby discovery      | No location-based search             | Nearby filter to find animals locally               |
+| No direct interaction    | No direct buyer-seller communication | Direct contact (call/chat) with sellers             |
+| Limited functionality    | Only e-commerce OR listings          | Hybrid system (e-commerce + marketplace + services) |
+
+---
+
  # Conclusion
 
 Pets Zone is a complete digital marketplace that connects pet lovers, livestock sellers, and buyers in one platform, making the process simple, transparent, and efficient.
