@@ -141,9 +141,15 @@ This project addresses major limitations found in existing pet and livestock pla
 Pets Zone is a complete digital marketplace that connects pet lovers, livestock sellers, and buyers in one platform, making the process simple, transparent, and efficient.
 
   ---
-# References
+##  References
 
+### 🔗 Inspiration Platforms
 
+* Petmania (Pet Products E-Commerce)
+  https://www.petmania.ie/
+
+* Dog Sale in Chennai (Animal Listings Platform)
+  https://dogsaleinchennai.com/index.php
 
   ---
 
