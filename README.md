@@ -141,4 +141,11 @@ This project addresses major limitations found in existing platforms by providin
 
 ---
 
+##  Documentation
+
+
+- [Presentation](./petkart ppt.pdf)
+
+---
+
 *Connecting pet lovers and sellers on one powerful platform*
