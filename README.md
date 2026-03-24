@@ -145,6 +145,7 @@ This project addresses major limitations found in existing platforms by providin
 
 
 - [Presentation](petskart-ppt.pdf)
+- [Figma Skectch](https://www.figma.com/proto/p6KLmg3pl4PmKVDZ9ymfQr/petskart?node-id=5-68&p=f&t=xf5VRVeVcTkiFOuQ-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
 
 ---
 
