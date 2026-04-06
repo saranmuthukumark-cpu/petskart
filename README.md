@@ -1,36 +1,151 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# PETSKART – Pets & Livestock E-Commerce Platform (MERN Stack)
 
-## Getting Started
+---
 
-First, run the development server:
+## Project Overview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**PetsKart** is a modern **MERN Stack (MongoDB, Express.js, React.js, Node.js)** based e-commerce web application designed for pet lovers and livestock traders.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The platform enables users to **buy and sell pets, livestock, and pet-related products** with a **multi-role authentication system**.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Each user (**Admin, Vendor, Client**) logs in and accesses a **separate dashboard** based on their role.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## Problem Statement
 
-To learn more about Next.js, take a look at the following resources:
+- No dedicated platform for **pets, livestock, and accessories** in one place
+- Difficulty in finding **trusted and verified sellers**
+- Lack of proper animal details (price, age, breed, health)
+- No **location-based system** for nearby livestock discovery
+- No proper system for vendors to **manage listings efficiently**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Objective
 
-## Deploy on Vercel
+- Connect buyers and sellers directly
+- Provide detailed and structured animal listings
+- Support both **online shopping and direct seller interaction**
+- Enable **location-based search**
+- Integrate pets, livestock, and accessories in one platform
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## User Roles & Workflow
+
+### 1. Admin (Control Panel)
+
+#### Features:
+
+- Secure admin login
+- Manage all users (block/unblock vendors & clients)
+- Full CRUD operations:
+  - Add / Update / Delete pets & livestock
+  - Manage veterinary services
+  - Manage pet grooming and training services
+  - Manage accessories (food, cages, dress, toys)
+
+- Approve or reject vendor listings
+- View all orders and transactions
+- Dashboard analytics (sales, users, listings)
+
+---
+
+### 2. Vendor (Seller Dashboard)
+
+#### Features:
+
+- Register/Login as vendor
+- Create listings for:
+  - Pets (dog, cat, bird) – for sale or free
+  - Livestock (cow, buffalo, goat, etc.)
+
+- Upload listing details:
+  - Animal images
+  - Price
+  - Age
+  - Location
+  - Description
+
+- Manage listings (Edit/Delete)
+- Track sales and orders
+
+---
+
+### 3. Client (Buyer)
+
+#### Features:
+
+- Register/Login as client
+- Browse animals and products
+- Filter by:
+  - Category (pet / livestock / accessories)
+  - Price
+  - Age
+  - Nearby location
+
+- View:
+  - Animal details (price, age, images)
+  - Seller contact information
+
+- Purchase:
+  - Small pets & accessories using cart system
+
+- Shopping flow:
+  - Add to cart → Checkout → Payment → Order confirmation
+
+- Save and manage delivery address
+
+---
+
+## Unique Selling Points (USP)
+
+1. **Hybrid Platform** – Combines e-commerce with live animal marketplace
+2. **Nearby Livestock Discovery** – Location-based animal search
+3. **Multi-Role Ecosystem** – Admin, Vendor, and Client dashboards
+4. **Dual Buying System** – Online purchase + direct seller interaction
+5. **Expandable Services** – Veterinary care, grooming, and training
+
+---
+
+## Key Problems vs Our Solutions
+
+This project addresses major limitations found in existing platforms by providing a more flexible and scalable system.
+
+| Problem                  | ❌ Existing Platforms                | ✅ Our Solution                                     |
+| ------------------------ | ------------------------------------ | --------------------------------------------------- |
+| Single vendor limitation | Only one business sells products     | Multi-vendor marketplace (multiple sellers)         |
+| No livestock support     | Pets only, no cow/buffalo selling    | Supports pets + full livestock trading              |
+| No nearby discovery      | No location-based search             | Nearby filter to find animals locally               |
+| No direct interaction    | No direct buyer-seller communication | Direct contact (call/chat) with sellers             |
+| Limited functionality    | Only e-commerce OR listings          | Hybrid system (e-commerce + marketplace + services) |
+
+---
+
+## Conclusion
+
+**PetsKart** is a complete digital marketplace that connects pet lovers, livestock sellers, and buyers in one platform, making the process **simple, transparent, and efficient**.
+
+---
+
+## References
+
+### Inspiration Platforms
+
+- Petmania (Pet Products E-Commerce)
+  [https://www.petmania.ie/](https://www.petmania.ie/)
+
+- Dog Sale in Chennai (Animal Listings Platform)
+  [https://dogsaleinchennai.com/index.php](https://dogsaleinchennai.com/index.php)
+
+---
+
+## Documentation
+
+- [Presentation](petskart-ppt.pdf)
+- [Figma Skectch](https://www.figma.com/proto/p6KLmg3pl4PmKVDZ9ymfQr/petskart?node-id=5-68&p=f&t=xf5VRVeVcTkiFOuQ-1&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1)
+
+---
+
+_Connecting pet lovers and sellers on one powerful platform_
