@@ -108,12 +108,14 @@ export default function Marketplace() {
                 key={pet.id}
                 className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 <div className="relative h-52">
+                      <Link href={`/pets-detailed-view/${pet.id}`}>
                   <Image
                     src={pet.image}
                     alt={pet.name}
                     fill
                     className="object-fit"
                   />
+                  </Link>
                 </div>
 
                 <div className="p-4">

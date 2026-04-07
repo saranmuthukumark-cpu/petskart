@@ -1,12 +1,12 @@
 import { live } from "@/data/Livestock";
-import { Phone } from "lucide-react";
+import { CircleArrowLeft, Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function LivestockDetails({ params }) {
   const { id } = await params;
 
-  console.log(id);
   const pet = live.find((pet) => String(pet.id) === String(id));
 
   if (!pet) return notFound();
@@ -22,6 +22,11 @@ export default async function LivestockDetails({ params }) {
             priority
             className="object-fit"
           />
+          <div className="absolute right-3 top-2 bg-[#7f5539] p-2 rounded-full text-white hover:scale-110 ">
+            <Link href={"/livestocks"}>
+              <CircleArrowLeft />
+            </Link>
+          </div>
         </div>
 
         <div className="p-6 md:p-8">

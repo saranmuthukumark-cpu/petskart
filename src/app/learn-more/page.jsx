@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function learnMore() {
   return (
@@ -15,9 +16,11 @@ export default function learnMore() {
             quickly and safely.
           </p>
 
-          <button className="bg-[#7f5539] text-white px-6 py-3 rounded-full">
+          <Link
+            href={"/sellpet"}
+            className="bg-[#7f5539] text-white px-6 py-3 rounded-full">
             Start Selling
-          </button>
+          </Link>
         </div>
 
         <div className="flex-1 flex justify-center">

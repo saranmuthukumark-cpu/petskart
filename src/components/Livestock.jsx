@@ -45,7 +45,7 @@ export default function Livestock() {
 
               <p className="text-sm text-gray-500">{pet.location.district}</p>
 
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-gray-400 py-2">
                 Owner: {pet.owner.name}
               </p>
 

@@ -29,7 +29,8 @@ export const pharmacy = [
     price: 200,
     stock: 30,
     location: "Hyderabad",
-    image: "https://images.unsplash.com/photo-1626716493137-b67fe9501e9c",
+    image:
+      "https://i.pinimg.com/736x/bc/83/69/bc836948335cfb2d2803a5bf631d15fc.jpg",
     details: "Removes internal parasites effectively.",
   },
   {
@@ -51,7 +52,8 @@ export const pharmacy = [
     price: 300,
     stock: 18,
     location: "Madurai",
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b",
+    image:
+      "https://i.pinimg.com/1200x/32/0e/4e/320e4ef7f1eb33d9b28be582e9eda575.jpg",
     details: "For wound cleaning and infection prevention.",
   },
 ];

@@ -10,7 +10,9 @@ export const pets = [
     oldPrice: 30000,
     price: 25000,
     image:
-      "https://i.pinimg.com/736x/60/b4/81/60b481981f4c4c7b2b3a63bf00e52d1d.jpg",
+      "https://i.pinimg.com/736x/04/19/6f/04196fe77e378cfe4d18a48b4dd0d02b.jpg",
+    details:
+      "Golden Retriever is a friendly and intelligent dog known for its loyalty and gentle nature. It is highly suitable for families and easy to train. This breed requires regular exercise, a balanced diet, and routine veterinary care. It feeds on high-quality dog food, proteins, and clean water. Regular grooming such as brushing its coat, bathing, and nail trimming helps maintain its health and shiny fur.",
   },
   {
     id: 12,
@@ -22,7 +24,10 @@ export const pets = [
     location: "Bangalore",
     oldPrice: 26000,
     price: 22000,
-    image: "https://images.unsplash.com/photo-1558788353-f76d92427f16",
+    image:
+      "https://i.pinimg.com/736x/90/36/ef/9036ef4cfc144a86559b2b283bfa54d1.jpg",
+    details:
+      "Labrador is a highly energetic and friendly dog known for its intelligence and adaptability. It is great for families and requires regular exercise and training. Proper care includes clean shelter, vaccinations, and a nutritious diet including proteins and dry food. Grooming like brushing and occasional bathing helps maintain hygiene and reduces shedding.",
   },
   {
     id: 13,
@@ -34,7 +39,10 @@ export const pets = [
     location: "Hyderabad",
     oldPrice: 35000,
     price: 30000,
-    image: "https://images.unsplash.com/photo-1587300003388-59208cc962cb",
+    image:
+      "https://i.pinimg.com/736x/c8/4b/c4/c84bc4a083a3e770d41c531ef44850fa.jpg",
+    details:
+      "German Shepherd is a strong, intelligent, and loyal breed widely used for security and companionship. It requires proper training, regular exercise, and a protein-rich diet. Maintenance includes vaccinations, clean housing, and regular vet visits. Grooming involves brushing the coat and maintaining hygiene for better health.",
   },
   {
     id: 14,
@@ -46,7 +54,10 @@ export const pets = [
     location: "Chennai",
     oldPrice: 18000,
     price: 15000,
-    image: "https://images.unsplash.com/photo-1592194996308-7b43878e84a6",
+    image:
+      "https://i.pinimg.com/1200x/5c/52/f8/5c52f8abf836f0ad713006ad8262f343.jpg",
+    details:
+      "Persian cats are calm and affectionate pets known for their long fluffy coats. They require indoor care, a clean environment, and regular grooming. Feeding includes quality cat food and clean water. Daily brushing is essential to prevent tangles, and regular hygiene maintenance ensures their comfort.",
   },
   {
     id: 15,
@@ -58,7 +69,10 @@ export const pets = [
     location: "Madurai",
     oldPrice: 4000,
     price: 3000,
-    image: "https://images.unsplash.com/photo-1552728089-57bdde30beb3",
+    image:
+      "https://i.pinimg.com/736x/31/9e/17/319e17f97d4a3077b5f3094c0e65c6c8.jpg",
+    details:
+      "Parrots are intelligent and social birds that require interaction and proper care. They need a clean cage, fresh water, and a diet including seeds, fruits, and vegetables. Regular cage cleaning and mental stimulation are important. Minimal grooming is required but maintaining hygiene ensures good health.",
   },
   {
     id: 16,
@@ -71,7 +85,9 @@ export const pets = [
     oldPrice: 500,
     price: 300,
     image:
-      "https://i.pinimg.com/736x/30/fb/4b/30fb4b7c6aed05a725b80566d0abff3c.jpg",
+      "https://i.pinimg.com/1200x/e9/45/91/e94591c1b969d7028992940c11e52a2a.jpg",
+    details:
+      "Goldfish are easy to maintain aquatic pets suitable for beginners. They require a clean aquarium with proper filtration and regular water changes. Feeding includes fish flakes and pellets in controlled amounts. Maintenance of water quality is essential for their health and longevity.",
   },
   {
     id: 17,
@@ -83,11 +99,11 @@ export const pets = [
     location: "Trichy",
     oldPrice: 2000,
     price: 1500,
-    image: "https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308",
+    image:
+      "https://i.pinimg.com/1200x/eb/1d/41/eb1d41eab2667a6451ef1819a11489e3.jpg",
+    details:
+      "White rabbits are gentle and easy-to-handle pets that require a clean and spacious cage. They feed on hay, vegetables, and pellets. Regular cleaning of their living space and basic grooming ensures their health. They are low-maintenance and suitable for home environments.",
   },
-
-  
-
   {
     id: 18,
     name: "Pomeranian",
@@ -98,7 +114,10 @@ export const pets = [
     location: "Chennai",
     oldPrice: 20000,
     price: 17000,
-    image: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b",
+    image:
+      "https://i.pinimg.com/1200x/bc/ed/bb/bcedbbef3ff297af4956967a3bc8e92f.jpg",
+    details:
+      "Pomeranian is a small and active dog with a fluffy coat and playful nature. It requires regular grooming, exercise, and a balanced diet. Maintenance includes vaccinations and hygiene care. Brushing its coat frequently helps prevent tangles and keeps it healthy.",
   },
   {
     id: 19,
@@ -110,7 +129,10 @@ export const pets = [
     location: "Bangalore",
     oldPrice: 22000,
     price: 18000,
-    image: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131",
+    image:
+      "https://i.pinimg.com/1200x/08/40/9f/08409fc693258e1dea84c07e0524d523.jpg",
+    details:
+      "Siamese cats are intelligent and vocal pets known for their affectionate nature. They require attention, a clean environment, and proper nutrition. Feeding includes quality cat food and water. Grooming is minimal but hygiene and regular care are important.",
   },
   {
     id: 20,
@@ -122,6 +144,9 @@ export const pets = [
     location: "Salem",
     oldPrice: 3500,
     price: 2500,
-    image: "https://images.unsplash.com/photo-1444464666168-49d633b86797",
+    image:
+      "https://i.pinimg.com/736x/cf/df/f0/cfdff0ae548dc9f1e07a3a759c144972.jpg",
+    details:
+      "Love birds are small, colorful, and social birds that thrive in pairs. They require a clean cage, fresh food, and interaction. Their diet includes seeds, fruits, and vegetables. Regular cage cleaning and proper care ensure their health and happiness.",
   },
 ];

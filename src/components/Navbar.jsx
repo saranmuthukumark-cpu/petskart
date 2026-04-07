@@ -32,7 +32,7 @@ export default function Navbar() {
               src="/assets/petskart-logo1.png"
               alt="logo"
               width={120}
-              height={40}
+              height={50}
               className=""
             />
           </Link>
