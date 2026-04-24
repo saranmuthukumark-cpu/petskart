@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const proxyUrl = process.env.NEXT_PUBLIC_BACKEND_URL
+const proxyUrl = process.env.NEXT_PUBLIC_BACKEND_URL;
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -17,24 +17,23 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "**"
+        hostname: "**",
       },
       {
         protocol: "http",
-        hostname: "localhost"
+        hostname: "localhost",
       },
-
     ],
   },
   async rewrites() {
     return [
       {
-        source: `/${proxyUrl}/api/:path*`,
-        destination: "/:path*",
+        source: "/api/:path*",
+        destination: `${proxyUrl}/:path*`,
       },
       {
         source: "/uploads/:path*",
-        destination: `/${proxyUrl}/uploads/:path*`,
+        destination: `${proxyUrl}/uploads/:path*`,
       },
     ];
   },
