@@ -3,32 +3,35 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { pets } from "@/data/Pets";
 import { Filter } from "lucide-react";
 import { AddToCart } from "@/utils/cart";
+import { useData } from "@/context/LivestockContext";
 
 export default function Marketplace() {
   const [category, setCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [maxAge, setMaxAge] = useState("");
   const [sort, setSort] = useState("");
+  const { pets, loading } = useData();
 
   let filteredData = pets.filter((pet) => {
     return (
       (category ? pet.family === category : true) &&
-      (maxPrice ? pet.price_inr <= Number(maxPrice) : true) &&
-      (maxAge ? pet.age <= Number(maxAge) : true)
+      (maxPrice ? pet.price <= Number(maxPrice) : true) &&
+      (maxAge ? parseFloat(pet.age) <= Number(maxAge) : true)
     );
   });
 
   if (sort === "low") {
-    filteredData.sort((a, b) => a.price_inr - b.price_inr);
+    filteredData.sort((a, b) => a.price - b.price);
   } else if (sort === "high") {
-    filteredData.sort((a, b) => b.price_inr - a.price_inr);
+    filteredData.sort((a, b) => b.price - a.price);
   }
 
   const categories = [...new Set(pets.map((pet) => pet.family))];
-
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
   return (
     <div className="flex bg-white min-h-screen">
       <aside className="w-64 bg-gray-200 p-6 hidden md:block">
@@ -105,21 +108,26 @@ export default function Marketplace() {
           {filteredData.length > 0 ? (
             filteredData.map((pet) => (
               <div
-                key={pet.id}
+                key={pet._id}
                 className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 <div className="relative h-52">
-                      <Link href={`/pets-detailed-view/${pet.id}`}>
-                  <Image
-                    src={pet.image}
-                    alt={pet.name}
-                    fill
-                    className="object-fit"
-                  />
+                  <Link href={`/pets-detailed-view/${pet._id}`}>
+                    <Image
+                      src={pet.image}
+                      alt={"iamge"}
+                      fill
+                      className="object-fit"
+                    />
                   </Link>
                 </div>
 
                 <div className="p-4">
-                  <h3 className="font-semibold text-lg">{pet.family}</h3>
+                  <h3 className="font-semibold text-lg">
+                    {pet.name}{" "}
+                    <span className="text-sm text-gray-400">
+                      ({pet.family})
+                    </span>
+                  </h3>
                   <p className="text-sm text-gray-500">{pet.age} </p>
                   <p className="text-sm text-gray-500">
                     <span className="line-through pr-2">₹{pet.oldPrice}</span>
@@ -128,7 +136,14 @@ export default function Marketplace() {
                     </span>
                   </p>
 
-                  <p className="text-sm text-gray-500">{pet.location}</p>
+                  <p className="text-sm text-gray-500">
+                    {typeof pet.location === "object" && pet.location !== null
+                      ? `${pet.location.village || ""}, ${pet.location.district || ""}`.replace(
+                        /(^, )|(, $)/g,
+                        "",
+                      )
+                      : pet.location}
+                  </p>
 
                   <button
                     onClick={() => AddToCart(pet)}

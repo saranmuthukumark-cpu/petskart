@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function CartPage() {
   const [cart, setCart] = useState([]);
   const router = useRouter();
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const data = JSON.parse(localStorage.getItem("cart")) || [];
@@ -22,7 +25,7 @@ export default function CartPage() {
   const increase = (id) => {
     updateCart(
       cart.map((pet) =>
-        pet.id === id ? { ...pet, quantity: pet.quantity + 1 } : pet,
+        pet._id === id ? { ...pet, quantity: pet.quantity + 1 } : pet,
       ),
     );
   };
@@ -30,7 +33,7 @@ export default function CartPage() {
   const decrease = (id) => {
     updateCart(
       cart.map((pet) =>
-        pet.id === id && pet.quantity > 1
+        pet._id === id && pet.quantity > 1
           ? { ...pet, quantity: pet.quantity - 1 }
           : pet,
       ),
@@ -38,7 +41,7 @@ export default function CartPage() {
   };
 
   const remove = (id) => {
-    updateCart(cart.filter((pet) => pet.id !== id));
+    updateCart(cart.filter((pet) => pet._id !== id));
     alert("Removed! from Family");
   };
 
@@ -56,11 +59,11 @@ export default function CartPage() {
           {cart.length === 0 ? (
             <p>Family is empty</p>
           ) : (
-            cart.map((pet) => (
+            cart.map((pet, index) => (
               <div
-                key={pet.id}
+                key={pet._id || pet.id || index}
                 className="flex gap-4 items-center bg-white p-4 rounded-xl shadow-sm">
-                <div className="w-30 h-30  rounded-xl overflow-hidden relative">
+                <div className="w-50 h-30  rounded-xl overflow-hidden relative">
                   {pet.image ? (
                     <Image
                       src={pet.image}
@@ -82,7 +85,7 @@ export default function CartPage() {
 
                   <div className="flex items-center gap-3 mt-3">
                     <button
-                      onClick={() => decrease(pet.id)}
+                      onClick={() => decrease(pet._id)}
                       className="px-3 py-1 bg-gray-200 rounded">
                       -
                     </button>
@@ -90,13 +93,13 @@ export default function CartPage() {
                     <span>{pet.quantity}</span>
 
                     <button
-                      onClick={() => increase(pet.id)}
+                      onClick={() => increase(pet._id)}
                       className="px-3 py-1 bg-gray-200 rounded">
                       +
                     </button>
 
                     <button
-                      onClick={() => remove(pet.id)}
+                      onClick={() => remove(pet._id)}
                       className="ml-4 text-red-600 text-sm">
                       Remove
                     </button>
@@ -137,9 +140,20 @@ export default function CartPage() {
           </div>
 
           <button
-            onClick={() => router.push("/checkout")}
-            className="mt-6 w-full bg-[#7f5539] text-white py-3 rounded-full font-medium">
-            Bring Me Home
+            onClick={() => {
+              if (user) {
+                router.push("/checkout");
+              } else {
+                alert("login to proceed to checkout");
+              }
+            }}
+            disabled={!user}
+            className={`mt-6 w-full py-3 rounded-full font-medium ${
+              user
+                ? "bg-[#7f5539] text-white hover:bg-[#6c4830] cursor-pointer"
+                : "bg-[#7f5539] text-white opacity-70 cursor-not-allowed"
+            }`}>
+            {user ? "Bring Me Home" : "Login to Checkout"}
           </button>
         </div>
       </div>

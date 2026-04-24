@@ -2,13 +2,15 @@ export const AddToCart = (pet) => {
   if (!pet) return;
   let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const existing = cart.find((i) => i.id === pet.id);
+  const itemId = pet._id || pet.id;
+
+  const existing = cart.find((i) => (i._id || i.id) === itemId);
 
   if (existing) {
     existing.quantity += 1;
   } else {
     cart.push({
-      id: pet.id,
+      _id: itemId,
       name: pet.name || pet.animal,
       price: pet.price || pet.price_inr,
       image: pet.image,

@@ -1,7 +1,12 @@
+"use client"
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function learnMore() {
+    const { user } = useContext(AuthContext);
+
   return (
     <div className="bg-white min-h-screen p-6 md:p-12">
       <div className="bg-[#fff2ee] rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
@@ -16,11 +21,19 @@ export default function learnMore() {
             quickly and safely.
           </p>
 
-          <Link
-            href={"/sellpet"}
-            className="bg-[#7f5539] text-white px-6 py-3 rounded-full">
-            Start Selling
-          </Link>
+          {user ? (
+              <Link
+                href={"/sellpet"}
+                className="bg-[#7f5539] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 ">
+                START SELLING
+              </Link>
+            ) : (
+              <button
+                disabled
+                className="bg-[#7f5539] text-white px-6 py-3 rounded-full font-medium cursor-not-allowed opacity-80">
+                START SELLING
+              </button>
+            )}
         </div>
 
         <div className="flex-1 flex justify-center">

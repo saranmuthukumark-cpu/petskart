@@ -1,22 +1,26 @@
 "use client";
 
 import { useState } from "react";
-import { vets } from "@/data/Veterinary";
 import Image from "next/image";
 import { Filter } from "lucide-react";
+import { useData } from "@/context/LivestockContext";
 
 export default function VeterinaryPage() {
   const [location, setLocation] = useState("");
   const [maxFees, setMaxFees] = useState("");
+  const { veterinary, loading } = useData();
 
-  let filtered = vets.filter((doc) => {
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
+  let filtered = veterinary.filter((doc) => {
     return (
       (location ? doc.location === location : true) &&
       (maxFees ? doc.fees <= Number(maxFees) : true)
     );
   });
 
-  const locations = [...new Set(vets.map((v) => v.location))];
+  const locations = [...new Set(veterinary.map((v) => v.location))];
 
   return (
     <div className="flex bg-gray-100 min-h-screen">
@@ -73,7 +77,7 @@ export default function VeterinaryPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((doc) => (
             <div
-              key={doc.id}
+              key={doc._id}
               className="bg-white rounded-2xl shadow-sm overflow-hidden">
               <div className="relative h-52">
                 <Image

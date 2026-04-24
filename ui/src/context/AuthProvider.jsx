@@ -10,7 +10,6 @@ export default function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   const isAuthenticated = !!user;
-  
 
   const refreshSession = useCallback(async () => {
     try {
@@ -45,7 +44,7 @@ export default function AuthProvider({ children }) {
     const me = await refreshSession();
     if (me) {
       if (me.role === "admin") {
-        router.push("/admin-dashboard");
+        router.push("/admin/admin-dashboard");
       } else {
         router.push("/");
       }
@@ -59,7 +58,7 @@ export default function AuthProvider({ children }) {
         headers: {
           "Content-Type": "application/json",
         },
-        credentials: "include", // Important for  cookies
+        credentials: "include",
       });
     } catch (error) {
       console.error("Error logging out:", error);

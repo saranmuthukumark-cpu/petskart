@@ -1,20 +1,30 @@
-import { live } from "@/data/Livestock";
+"use client";
+
+import { use } from "react";
 import { CircleArrowLeft, Phone } from "lucide-react";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useData } from "@/context/LivestockContext";
+
 import { notFound } from "next/navigation";
 
-export default async function LivestockDetails({ params }) {
-  const { id } = await params;
+export default function LivestockDetails({ params }) {
+  const { id } = use(params);
 
-  const pet = live.find((pet) => String(pet.id) === String(id));
+  const { livestocks, loading } = useData();
+
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
+  const pet = livestocks.find((pet) => String(pet._id) === String(id));
 
   if (!pet) return notFound();
 
   return (
     <div className="bg-white min-h-screen py-8 px-4">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
-        <div className="relative w-full h-63 md:h-100">
+        <div className="relative w-full h-65 md:h-120">
           <Image
             src={pet.image}
             alt={pet.animal}

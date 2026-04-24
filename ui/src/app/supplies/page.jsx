@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { supplies } from "@/data/Supplies";
 import Image from "next/image";
 import { Filter } from "lucide-react";
 import { AddToCart } from "@/utils/cart";
+import { useData } from "@/context/LivestockContext";
 
 export default function PetSuppliesPage() {
   const [category, setCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [sort, setSort] = useState("");
+  const { supplies, loading } = useData();
 
   let filtered = supplies.filter((pet) => {
     return (
@@ -25,6 +26,16 @@ export default function PetSuppliesPage() {
   }
 
   const categories = [...new Set(supplies.map((i) => i.category))];
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
+
+  function getImageSrc(img) {
+    if (!img) return "";
+    if (img.startsWith("/uploads/")) return `http://localhost:5000${img}`;
+    return img;
+  }
+
 
   return (
     <div className="flex bg-white min-h-screen">
@@ -69,7 +80,7 @@ export default function PetSuppliesPage() {
               setMaxPrice("");
             }}
             className="w-full bg-[#7f5539] text-white py-2 rounded-md">
-            Reset 
+            Reset
           </button>
         </div>
       </aside>
@@ -92,11 +103,12 @@ export default function PetSuppliesPage() {
           {filtered.length > 0 ? (
             filtered.map((pet) => (
               <div
-                key={pet.id}
+                key={pet._id}
                 className="bg-white rounded-2xl shadow-sm hover:shadow-md  overflow-hidden">
                 <div className="relative h-52">
                   <Image
                     src={pet.image}
+
                     alt={pet.name}
                     fill
                     className="object-cover"

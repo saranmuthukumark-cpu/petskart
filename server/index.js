@@ -1,147 +1,54 @@
 import express from "express";
 import cors from "cors";
+import path from "path";
+import fs from "fs";
 import "./utils/loadEnvironment.js";
-import db from "./db/connection.js";
-import bcrypt from "bcrypt";
-import { authMiddleware } from "./middleware/auth.js";
-import jwt from "jsonwebtoken";
-import { ObjectId } from "mongodb";
+import "./db/connection.js";
+import authRoutes from "./routers/auth.route.js";
+import userRoutes from "./routers/user.route.js";
+import Livestock from "./routers/livestocks.route.js";
+import PetsRoutes from "./routers/pets.route.js";
+import Pharmacy from "./routers/pharmacy.route.js";
+import Supplies from "./routers/supplies.route.js";
+import Veterinary from "./routers/veterinary.route.js";
+import OrdersRoutes from "./routers/order.route.js";
+import adminListingRoutes from "./routers/adminList.route.js";
+
 const PORT = process.env.PORT || 5000;
 const app = express();
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  }),
-);
+
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.json({ message: "SERVER is running....." });
-});
+const uploadsDir = path.join(import.meta.dirname, "uploads");
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir);
+app.use("/uploads", express.static(uploadsDir));
 
-app.get("/petskart", async (req, res) => {
-  try {
-    const petskart = await db.collection("users").find().toArray();
-    res.json(petskart);
-  } catch (error) {
-    console.error("Error fetching petskart:", error);
-    res.status(500).json({ error: "Failed to fetch petskart" });
-  }
-});
+app.get("/", (req, res) => res.json({ message: "SERVER is running" }));
 
-app.post("/register", async (req, res) => {
-  const { name, email, password } = req.body;
 
-  // validation
-  if (!name || !email || !password) {
-    return res.status(400).json({ error: "Invalid credentials" });
-  }
+app.use("/users", userRoutes);
+//livestocks
+app.use("/livestocks", Livestock);
+//pets
+app.use("/pets", PetsRoutes);
+//pharmacy
+app.use("/pharmacy", Pharmacy);
+//supplies
+app.use("/supplies", Supplies);
+//veterinary
+app.use("/veterinary", Veterinary);
+//orders
+app.use("/orders", OrdersRoutes);
+//auth
+app.use("/", authRoutes);
 
-  try {
-    await db
-      .collection("users")
-      .insertOne({ name, email, password: bcrypt.hashSync(password, 5) });
 
-    res.json({
-      message: `Hello👋 ${name}, you have registered successfully `,
-    });
-  } catch (error) {
-    console.error("Error registering user:", error);
-    res.status(500).json({ error: "Failed register " });
-  }
-});
 
-// createlogin user
-app.post("/login", async (req, res) => {
-  const { email, password } = req.body;
 
-  // validation
-  if (!email || !password) {
-    return res.status(400).json({ error: "Enter input" });
-  }
-
-  try {
-    const user = await db.collection("users").findOne({ email });
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    const isPasswordValid = bcrypt.compareSync(password, user.password);
-
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid password" });
-    }
-
-    // user info
-    const role = user.role || "user";
-    const token = jwt.sign(
-      { id: user._id, email: user.email, role },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "1h",
-      },
-    );
-
-    res.cookie("token", token, {
-      httpOnly: true,
-      maxAge: 60 * 60 * 1000, // 1 hour
-      sameSite: "Lax",
-      path: "/",
-    });
-
-    res.json({ message: `logged in successfully`, token, role });
-  } catch (error) {
-    console.error("Error logging in user:", error);
-    res
-      .status(500)
-      .json({ error: "Failed to login user", errorMessage: error.message });
-  }
-});
-
-app.get("/me", authMiddleware, async (req, res) => {
-  const loggedInUser = req.user;
-
-  console.log("Logged in user:", loggedInUser);
-
-  try {
-    const user = await db
-      .collection("users")
-      .findOne(
-        { _id: new ObjectId(loggedInUser.id) },
-        { projection: { password: 0 } },
-      );
-
-    if (!user) {
-      return res.status(404).json({ error: "User not found" });
-    }
-
-    res.json({ user });
-  } catch (error) {
-    console.error("Error fetching user:", error);
-    res.status(500).json({ error: "Failed to fetch user" });
-  }
-});
-
-app.post("/logout", (req, res) => {
-  res.clearCookie("token", {
-    httpOnly: true,
-    sameSite: "Lax",
-    path: "/",
-  });
-  res.json({ message: "Logged out successfully" });
-});
-
-// route
-app.get("/", authMiddleware, (req, res) => {
-  const loggedInUser = req.user;
-
-  res.json({
-    user: loggedInUser,
-  });
-});
+//admin listings
+app.use("/adminlist", adminListingRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port http://localhost:${PORT}`);
+  console.log(`Server : http://localhost:${PORT}`);
 });

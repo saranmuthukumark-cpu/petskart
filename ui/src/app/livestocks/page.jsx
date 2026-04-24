@@ -5,14 +5,16 @@ import { live } from "@/data/Livestock";
 import Image from "next/image";
 import Link from "next/link";
 import { Filter } from "lucide-react";
+import { useData } from "@/context/LivestockContext";
 
 export default function LivestockPage() {
   const [category, setCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
   const [maxAge, setMaxAge] = useState("");
   const [sort, setSort] = useState("");
+  const { livestocks, loading } = useData();
 
-  let filteredData = live.filter((pet) => {
+  let filteredData = livestocks.filter((pet) => {
     return (
       (category ? pet.animal === category : true) &&
       (maxPrice ? pet.price_inr <= Number(maxPrice) : true) &&
@@ -27,6 +29,9 @@ export default function LivestockPage() {
   }
 
   const categories = [...new Set(live.map((pet) => pet.animal))];
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
 
   return (
     <div className="flex bg-white min-h-screen">
@@ -106,7 +111,7 @@ export default function LivestockPage() {
           {filteredData.length > 0 ? (
             filteredData.map((pet) => (
               <div
-                key={pet.id}
+                key={pet._id}
                 className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 <div className="relative h-52">
                   <Image
@@ -131,7 +136,7 @@ export default function LivestockPage() {
                   </p>
 
                   <Link
-                    href={`/livestock/${pet.id}`}
+                    href={`/livestock/${pet._id}`}
                     className="block mt-4 text-center bg-[#7f5539] text-white py-2 rounded-full">
                     View Details
                   </Link>

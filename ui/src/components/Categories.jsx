@@ -41,7 +41,7 @@ export default function Categories() {
         </Link>
 
        
-        <Link href={"/petsupplies"}>
+        <Link href={"/supplies"}>
           <div
             className="relative h-40 rounded-xl overflow-hidden cursor-pointer group bg-cover bg-center hover:scale-105 "
             style={{ backgroundImage: "url('/assets/supplies.jpg')" }}

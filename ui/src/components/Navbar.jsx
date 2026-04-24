@@ -12,13 +12,15 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import { AuthContext } from "@/context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [search, setSearch] = useState("");
+
   const router = useRouter();
+  const pathname = usePathname();
 
   const handleSearch = () => {
     const q = search.trim();
@@ -64,20 +66,30 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="hidden md:flex gap-6  font-medium">
-          <Link href={"/livestocks"} className="hover:text-[#7f5539]">
+        <div className="hidden md:flex gap-6 font-medium">
+          <Link
+            href={"/livestocks"}
+            className={`hover:text-[#7f5539] pb-1 ${pathname.startsWith("/livestocks") ? "text-[#7f5539] font-bold " : "text-black"}`}>
             Livestock
           </Link>
-          <Link href={"/marketplace"} className="hover:text-[#7f5539]">
+          <Link
+            href={"/marketplace"}
+            className={`hover:text-[#7f5539] pb-1 ${pathname.startsWith("/marketplace") ? "text-[#7f5539] font-bold " : "text-black"}`}>
             Marketplace
           </Link>
-          <Link href={"/petsupplies"} className="hover:text-[#7f5539]">
+          <Link
+            href={"/supplies"}
+            className={`hover:text-[#7f5539] pb-1 ${pathname.startsWith("/supplies") ? "text-[#7f5539] font-bold " : "text-black"}`}>
             Pet Supplies
           </Link>
-          <Link href={"/veterinary"} className="hover:text-[#7f5539]">
+          <Link
+            href={"/veterinary"}
+            className={`hover:text-[#7f5539] pb-1 ${pathname.startsWith("/veterinary") ? "text-[#7f5539] font-bold " : "text-black"}`}>
             Veterinary
           </Link>
-          <Link href={"/pharmacy"} className="hover:text-[#7f5539]">
+          <Link
+            href={"/pharmacy"}
+            className={`hover:text-[#7f5539] pb-1 ${pathname.startsWith("/pharmacy") ? "text-[#7f5539] font-bold " : "text-black"}`}>
             Pharmacy
           </Link>
         </div>
@@ -85,7 +97,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center bg-white px-4 py-2 rounded-full w-1/4 shadow-sm">
           <input
             type="text"
-            placeholder="Search pets..."
+            placeholder="Search pets"
             className="w-full outline-none text-sm bg-transparent"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -143,7 +155,7 @@ export default function Navbar() {
           <div className="flex items-center bg-white px-4 py-2 rounded-full shadow-sm">
             <input
               type="text"
-              placeholder="Search pets..."
+              placeholder="Search pets"
               className="w-full outline-none text-sm bg-transparent"
             />
             <Search size={18} />
@@ -151,7 +163,7 @@ export default function Navbar() {
 
           <Link href={"/livestocks"}>Livestock</Link>
           <Link href={"/marketplace"}>Marketplace</Link>
-          <Link href={"/petsupplies"}>Pet Supplies</Link>
+          <Link href={"/supplies"}>Pet Supplies</Link>
           <Link href={"/veterinary"}>Veterinary</Link>
           <Link href={"/pharmacy"}>Pharmacy</Link>
         </div>

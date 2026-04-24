@@ -1,9 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function CheckoutPage() {
   const [cart, setCart] = useState([]);
+
+  const router = useRouter();
 
   const [form, setForm] = useState({
     name: "",
@@ -25,21 +28,47 @@ export default function CheckoutPage() {
   const tax = subtotal * 0.05;
   const total = subtotal + tax;
 
-  const handleOrder = () => {
+  const handleOrder = async () => {
     if (!form.name || !form.phone || !form.address || !form.city) {
       alert("Please fill all details");
       return;
     }
 
-    console.log("Order:", {
-      form,
-      cart,
-      payment: "Cash on Delivery",
-    });
+    if (cart.length === 0) {
+      alert("Your cart is empty!");
+      return;
+    }
 
-    localStorage.removeItem("cart");
+    const orderData = {
+      name: form.name,
+      phone: form.phone,
+      address: form.address,
+      city: form.city,
+      items: cart,
+      totalAmount: total,
+      paymentMethod: "Cash on Delivery",
+    };
 
-    alert("Order placed successfully!");
+    try {
+      const response = await fetch("http://localhost:5000/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData),
+      });
+
+      if (response.ok) {
+        localStorage.removeItem("cart");
+        setCart([]);
+
+        alert("Order placed successfully!");
+        router.push("/");
+      } else {
+        alert("Failed to place order. Please try again.");
+      }
+    } catch (error) {
+      console.error("Order error:", error);
+      alert("Server error. Please try again.");
+    }
   };
 
   return (

@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   const onSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -112,9 +112,7 @@ export default function LoginPage() {
             Register
           </Link>
         </p>
-        <p className="text-sm text-center text-[#7f5539] mt-2">
-          <Link href={"/admin-dashboard"}>Admin</Link>
-        </p>
+      
       </div>
     </div>
   );

@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { pharmacy } from "@/data/Pharmacy";
 import Image from "next/image";
-import { Pill, MapPin, IndianRupee, Filter, RotateCcw } from "lucide-react";
+import { Filter } from "lucide-react";
 import { AddToCart } from "@/utils/cart";
+import { useData } from "@/context/LivestockContext";
 
 export default function PharmacyPage() {
   const [category, setCategory] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
+  const { pharmacy, loading } = useData();
 
   let filtered = pharmacy.filter((pet) => {
     return (
@@ -18,7 +19,9 @@ export default function PharmacyPage() {
   });
 
   const categories = [...new Set(pharmacy.map((i) => i.category))];
-
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
   return (
     <div className="flex bg-gray-100 min-h-screen">
       <aside className="w-64 bg-gray-200 p-6 hidden md:block">
@@ -74,7 +77,7 @@ export default function PharmacyPage() {
           {filtered.length > 0 ? (
             filtered.map((pet) => (
               <div
-                key={pet.id}
+                key={pet._id}
                 className="bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md ">
                 <div className="relative h-52">
                   <Image

@@ -14,6 +14,15 @@ const nextConfig = {
         protocol: "https",
         hostname: "example.com",
       },
+      {
+        protocol: "https",
+        hostname: "**"
+      },
+      {
+        protocol: "http",
+        hostname: "localhost"
+      },
+
     ],
   },
   async rewrites() {
@@ -21,6 +30,10 @@ const nextConfig = {
       {
         source: "/api/:path*",
         destination: "http://localhost:5000/:path*",
+      },
+      {
+        source: "/uploads/:path*",
+        destination: "http://localhost:5000/uploads/:path*",
       },
     ];
   },

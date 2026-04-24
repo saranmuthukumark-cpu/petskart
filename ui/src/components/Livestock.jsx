@@ -2,14 +2,18 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { live } from "@/data/Livestock";
+import { useData } from "@/context/LivestockContext";
 
 export default function Livestock() {
+  const { livestocks, loading } = useData();
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading </div>;
+  }
   return (
     <section className="px-6 py-10 bg-white">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold text-[#7f5539]">
-          Featured Livestocks 
+          Featured Livestocks
         </h2>
 
         <Link
@@ -20,9 +24,9 @@ export default function Livestock() {
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-        {live.slice(0, 8).map((pet) => (
+        {livestocks.slice(0, 8).map((pet) => (
           <div
-            key={pet.id}
+            key={pet._id}
             className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md  flex flex-col">
             <div className="relative h-40 w-full">
               <Image
@@ -30,7 +34,7 @@ export default function Livestock() {
                 alt={pet.animal}
                 fill
                 sizes="(max-width: 768px) 50vw, 25vw"
-                className="object-fit" 
+                className="object-fit"
               />
             </div>
 
@@ -50,7 +54,7 @@ export default function Livestock() {
               </p>
 
               <Link
-                href={`/livestock/${pet.id}`}
+                href={`/livestock/${pet._id}`}
                 className="mt-auto w-full bg-[#7f5539] text-white py-2 rounded text-sm text-center  hover:bg-[#6d4a31] ">
                 View Details
               </Link>

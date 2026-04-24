@@ -1,23 +1,31 @@
-import { pets } from "@/data/Pets";
+"use client";
+
+import { useParams } from "next/navigation";
 import { CircleArrowLeft } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { useData } from "@/context/LivestockContext";
 
-export default async function DetailedView({ params }) {
-  const { id } = await params;
+export default function DetailedView() {
+  const { id } = useParams();
+  const { pets, loading } = useData();
 
-  const pet = pets.find((pet) => String(pet.id) === String(id));
+  if (loading) {
+    return <div className="p-6 text-center text-[#7f5539]">Loading</div>;
+  }
 
-  if (!pet) return notFound();
+  const pet = pets.find((pet) => String(pet._id) === String(id));
 
+  if (!pet) {
+    return <div>Pet not found</div>;
+  }
   return (
     <div className="bg-white min-h-screen py-8 px-4">
       <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
         <div className="relative w-full h-64 md:h-100">
           <Image
             src={pet.image}
-            alt={pet.name}
+            alt={"image"}
             fill
             priority
             className="object-fit"
@@ -25,7 +33,7 @@ export default async function DetailedView({ params }) {
 
           <Link
             href={"/marketplace"}
-            className="absolute right-3 top-2 bg-[#7f5539] p-2 rounded-full text-white hover:scale-110"></Link>
+            className="absolute right-3 top-2 bg-[#7f5539] p-2 rounded-full text-white hover:scale-110"><CircleArrowLeft/></Link>
         </div>
 
         <div className="p-6 md:p-8">
@@ -50,13 +58,11 @@ export default async function DetailedView({ params }) {
             <p className="text-gray-700 leading-relaxed">{pet.details}</p>
           </div>
 
-        
-            <a
-              href={"/marketplace"}
-              className="mt-6 flex items-center justify-center gap-2 w-full bg-[#7f5539] text-white py-3 rounded-xl font-medium">
-              <CircleArrowLeft /> back
-            </a>
-          
+          <a
+            href={"/marketplace"}
+            className="mt-6 flex items-center justify-center gap-2 w-full bg-[#7f5539] text-white py-3 rounded-xl font-medium">
+            <CircleArrowLeft/> back
+          </a>
         </div>
       </div>
     </div>

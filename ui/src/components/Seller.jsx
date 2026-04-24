@@ -1,7 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "@/context/AuthContext";
 
 export default function Seller() {
+  const { user } = useContext(AuthContext);
+
   return (
     <section className="px-4 md:px-8 py-10">
       <div className="max-w-7xl mx-auto bg-[#fff2ee] rounded-2xl p-6 md:p-12 grid md:grid-cols-2 gap-8 items-center">
@@ -17,11 +23,19 @@ export default function Seller() {
           </p>
 
           <div className="flex flex-wrap gap-4 mt-8">
-            <Link
-              href={"/sellpet"}
-              className="bg-[#7f5539] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 ">
-              START SELLING
-            </Link>
+            {user ? (
+              <Link
+                href={"/sellpet"}
+                className="bg-[#7f5539] text-white px-6 py-3 rounded-full font-medium hover:opacity-90 ">
+                START SELLING
+              </Link>
+            ) : (
+              <button
+                disabled
+                className="bg-[#7f5539] text-white px-6 py-3 rounded-full font-medium cursor-not-allowed opacity-80">
+                START SELLING
+              </button>
+            )}
 
             <Link
               href={"/learn-more"}
