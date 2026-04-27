@@ -9,13 +9,18 @@ import * as z from "zod";
 import toast from "react-hot-toast";
 
 const schema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").trim(),
+  name: z
+    .string()
+    .min(2, "Name must be at least 2 characters")
+    .trim()
+    .regex(/^[a-zA-Z\s-]+$/, "Name can only letters"),
   email: z
     .string()
     .min(1, "Email is required")
     .email("Invalid email address")
     .trim()
-    .toLowerCase(),
+    .toLowerCase()
+    .regex(/^[a-z0-9._%+-]+@gmail\.com$/, "Invalid email address"),
   password: z
     .string()
     .regex(
@@ -58,11 +63,10 @@ export default function RegisterPage() {
       const registerData = await response.json();
 
       if (response.ok) {
-
-        toast.success(registerData.message || "Registered successfully!")
+        toast.success(registerData.message || "Registered successfully!");
         router.push("/login");
       } else {
-       toast.error(registerData.error);
+        toast.error(registerData.error);
       }
     } catch (error) {
       toast.error("Failed to register user");
