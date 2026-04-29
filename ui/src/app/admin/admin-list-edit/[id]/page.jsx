@@ -114,15 +114,11 @@ export default function AdminEditDashboard() {
         dataToSubmit.append("image", imageFile);
       }
 
-      const response = await fetch(
-        `/api/adminlist/${categoryType}/${id}`
-        ,
-        {
-          method: "PUT",
-          body: dataToSubmit,
-          credentials: "include",
-        },
-      );
+      const response = await fetch(`/api/adminlist/${categoryType}/${id}`, {
+        method: "PUT",
+        body: dataToSubmit,
+        credentials: "include",
+      });
 
       if (response.ok) {
         toast.success("Updated successfully");
@@ -210,6 +206,7 @@ export default function AdminEditDashboard() {
               <input
                 type="text"
                 name="name"
+                placeholder="name"
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -222,6 +219,7 @@ export default function AdminEditDashboard() {
               <input
                 type="text"
                 name="family"
+                placeholder="family"
                 value={formData.family}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -233,6 +231,7 @@ export default function AdminEditDashboard() {
               <input
                 type="text"
                 name="gender"
+                placeholder="gender"
                 value={formData.gender}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -244,6 +243,7 @@ export default function AdminEditDashboard() {
               <input
                 type="text"
                 name="location"
+                placeholder="location"
                 value={formData.location}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -256,6 +256,7 @@ export default function AdminEditDashboard() {
               <input
                 type="tel"
                 name="phone"
+                placeholder="phone"
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -267,6 +268,7 @@ export default function AdminEditDashboard() {
               <input
                 type="number"
                 name="price"
+                placeholder="price"
                 value={formData.price}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -278,6 +280,7 @@ export default function AdminEditDashboard() {
               <label className="pb-3 font-medium">Description:</label>
               <textarea
                 name="description"
+                placeholder="description"
                 value={formData.description}
                 onChange={handleChange}
                 className="w-full p-3 border rounded-lg outline-0"
@@ -311,7 +314,7 @@ export default function AdminEditDashboard() {
 
             <button
               type="submit"
-              className="w-full bg-[#7f5539] hover:bg-[#6a462f] transition text-white font-bold py-3 rounded-full">
+              className="w-full bg-[#7f5539] scale-105 text-white font-bold py-3 rounded-full">
               Update
             </button>
           </form>
